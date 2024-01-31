@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        button{
+            width: 9%;
+            height: auto
+        }
+        button{
+            background-color: #fdd787;
+            border: none;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            font-size: 100%;
+            cursor: pointer;
+            border-radius: 10%;
+        }
+        button.clicked {
+            background-color: #fec900;
+            color: white;
+        }
+        #numbers{
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left:50%;
+            width: 50%;
+            height: auto
+        }
+        body{
+            margin: 0;
+            overflow: hidden    
+        }
+        img{
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+        }
+        
+    </style>
+</head>
+<body>
+    <header></header>
+    <main>
+        <img src="images/background.png" alt="">
+        <div id="numbers">
+            <button onclick="changeColor(this)">1</button>
+            <button onclick="changeColor(this)">2</button>
+            <button onclick="changeColor(this)">3</button>
+            <button onclick="changeColor(this)">4</button>
+            <button onclick="changeColor(this)">5</button>
+            <button onclick="changeColor(this)">6</button>
+            <button onclick="changeColor(this)">7</button>
+            <button onclick="changeColor(this)">8</button>
+            <button onclick="changeColor(this)">9</button>
+            <button onclick="changeColor(this)">10</button><br><br>
+            <button onclick="changeColor(this)">11</button>
+            <button onclick="changeColor(this)">12</button>
+            <button onclick="changeColor(this)">13</button>
+            <button onclick="changeColor(this)">14</button>
+            <button onclick="changeColor(this)">15</button>
+            <button onclick="changeColor(this)">16</button>
+            <button onclick="changeColor(this)">17</button>
+            <button onclick="changeColor(this)">18</button>
+            <button onclick="changeColor(this)">19</button>
+            <button onclick="changeColor(this)">20</button><br><br>
+            <button onclick="changeColor(this)">21</button>
+            <button onclick="changeColor(this)">22</button>
+            <button onclick="changeColor(this)">23</button>
+            <button onclick="changeColor(this)">24</button>
+            <button onclick="changeColor(this)">25</button>
+            <button onclick="changeColor(this)">26</button>
+            <button onclick="changeColor(this)">27</button>
+            <button onclick="changeColor(this)">28</button>
+            <button onclick="changeColor(this)">29</button>
+            <button onclick="changeColor(this)">30</button><br><br>
+            <button onclick="changeColor(this)">31</button>
+            <button onclick="changeColor(this)">32</button>
+            <button onclick="changeColor(this)">33</button>
+            <button onclick="changeColor(this)">34</button>
+            <button onclick="changeColor(this)">35</button>
+            <button onclick="changeColor(this)">36</button>
+            <button onclick="changeColor(this)">37</button>
+            <button onclick="changeColor(this)">38</button>
+            <button onclick="changeColor(this)">39</button>
+            <button onclick="changeColor(this)">40</button><br><br>
+            <button onclick="changeColor(this)">41</button>
+            <button onclick="changeColor(this)">42</button>
+            <button onclick="changeColor(this)">43</button>
+            <button onclick="changeColor(this)">44</button>
+            <button onclick="changeColor(this)">45</button>
+            <button onclick="changeColor(this)">46</button>
+            <button onclick="changeColor(this)">47</button>
+            <button onclick="changeColor(this)">48</button>
+            <button onclick="changeColor(this)">49</button>
+            <button onclick="changeColor(this)">50</button>
+        </div>
+        <script>
+            const buttons = document.querySelectorAll('button');
+
+            buttons.forEach(button => {
+                const width = button.offsetWidth;
+                button.style.height = `${width}px`;
+
+                const buttonId = button.textContent;
+                const storedColor = localStorage.getItem(`buttonColor_${buttonId}`);
+                
+                if (storedColor) {
+                    button.style.backgroundColor = storedColor;
+                    button.classList.add('clicked');
+                }
+            });
+
+            function changeColor(button) {
+                const buttonId = button.textContent;
+                const currentColor = button.style.backgroundColor || getComputedStyle(button).backgroundColor;
+                const newColor = currentColor === 'rgb(253, 215, 135)' ? 'rgb(254, 201, 0)' : 'rgb(253, 215, 135)';
+    
+                button.style.backgroundColor = newColor;
+                button.classList.toggle('clicked');
+
+                localStorage.setItem(`buttonColor_${buttonId}`, newColor);
+            }
+        </script>
+    </main>
+</body>
+</html>
